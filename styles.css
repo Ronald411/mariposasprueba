@@ -1180,6 +1180,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
+    overflow: auto;
 }
 
 .modal-content {
@@ -1192,6 +1193,18 @@
     text-align: center;
     position: relative;
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .success-icon {
@@ -1234,4 +1247,93 @@
     padding: 10px;
     border-radius: 5px;
     margin: 10px 0;
+}
+
+/* Media Queries para móviles */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        margin: 20% auto;
+        width: 95%;
+        padding: 25px 20px;
+        border-radius: 12px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    
+    .success-icon {
+        font-size: 50px;
+        margin-bottom: 15px;
+    }
+    
+    .modal h2 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+    
+    .modal p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .close-btn {
+        padding: 14px 30px;
+        font-size: 16px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .modal-content {
+        margin: 10% auto;
+        width: 98%;
+        padding: 20px 15px;
+        border-radius: 10px;
+        max-height: 85vh;
+    }
+    
+    .success-icon {
+        font-size: 45px;
+        margin-bottom: 12px;
+    }
+    
+    .modal h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .modal p {
+        font-size: 15px;
+        margin-bottom: 18px;
+        padding: 0 5px;
+    }
+    
+    .close-btn {
+        padding: 12px 25px;
+        font-size: 15px;
+    }
+    
+    .error {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* Para pantallas muy pequeñas (320px) */
+@media screen and (max-width: 320px) {
+    .modal-content {
+        margin: 5% auto;
+        padding: 15px 10px;
+    }
+    
+    .success-icon {
+        font-size: 40px;
+    }
+    
+    .modal h2 {
+        font-size: 18px;
+    }
+    
+    .modal p {
+        font-size: 14px;
+    }
 }
