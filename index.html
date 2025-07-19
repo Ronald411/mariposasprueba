@@ -392,15 +392,55 @@
               Te invitamos a dar el primer paso hacia tu nuevo hogar...
             </p>
 
-            <form class="contact-form" data-aos="fade-up">
-              <input type="text" placeholder="Nombre Completo" required class="form-input" />
-              <input type="tel" placeholder="Teléfono" required class="form-input" />
-              <input type="email" placeholder="Correo electrónico" required class="form-input" />
-              <textarea placeholder="Mensaje" class="form-textarea"></textarea>
-              <button type="submit" class="contact-submit-btn">
-                ENVIAR
-              </button>
-            </form>
+           
+<form 
+  class="contact-form" 
+  data-aos="fade-up"
+  action="https://formspree.io/f/myzpzpyg"
+  method="POST"
+  id="contactForm"
+>
+  <input 
+    type="text" 
+    name="nombre" 
+    placeholder="Nombre Completo" 
+    required 
+    class="form-input" 
+  />
+  <input 
+    type="tel" 
+    name="telefono" 
+    placeholder="Teléfono" 
+    required 
+    class="form-input" 
+  />
+  <input 
+    type="email" 
+    name="email" 
+    placeholder="Correo electrónico" 
+    required 
+    class="form-input" 
+  />
+  <textarea 
+    name="mensaje" 
+    placeholder="Mensaje" 
+    class="form-textarea"
+  ></textarea>
+
+  <div id="errorMessage"></div>
+  
+  <button type="submit" class="contact-submit-btn" id="submitBtn">
+    ENVIAR
+  </button>
+</form>
+  <!-- Modal de confirmación -->
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <div class="success-icon">✓</div>
+        <h2>¡Mensaje Enviado!</h2>
+        <p>Gracias por contactarnos. Hemos recibido tu mensaje y te responderemos pronto.</p>
+        <button class="close-btn" onclick="closeModal()">Cerrar</button>
+    </div>
           </div>
         </div>
       </div>
@@ -461,7 +501,59 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
   <script>
+    const form = document.getElementById('contactForm');
+const modal = document.getElementById('successModal');
+const submitBtn = document.getElementById('submitBtn');
+const errorDiv = document.getElementById('errorMessage');
+
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Cambiar el botón mientras se envía
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'ENVIANDO...';
+    errorDiv.innerHTML = '';
+
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch('https://formspree.io/f/myzpzpyg', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            // Mostrar modal de éxito
+            modal.style.display = 'block';
+            // Limpiar el formulario
+            form.reset();
+        } else {
+            throw new Error('Error en el envío');
+        }
+    } catch (error) {
+        errorDiv.innerHTML = '<div class="error">Hubo un error al enviar el mensaje. Por favor intenta de nuevo.</div>';
+    } finally {
+        // Restaurar el botón
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'ENVIAR';
+    }
+});
+
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+// Cerrar modal al hacer clic fuera de él
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
     // Función para cambiar entre modelos
     function showModel(modelId) {
       // Ocultar todos los modelos
@@ -576,5 +668,6 @@ document.addEventListener('DOMContentLoaded', function() {
   </script>
   
   <script src="animaciones.js"></script>
+</div>
 </body>
 </html>
