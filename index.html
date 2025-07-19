@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Las Mariposas</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Animate On Scroll -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    /* Estilos adicionales para la sección de contacto */
+    .contact-section {
+      background: #161d31;
+      color: #e9e0d0;
+      font-family: Georgia, serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 80vh;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .contact-image {
+      flex: 1;
+      min-width: 300px;
+      position: relative;
+      background: linear-gradient(135deg, rgba(22, 29, 49, 0.8), rgba(22, 29, 49, 0.4)), url('portadaa4.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .contact-form-container {
+      flex: 1;
+      min-width: 300px;
+      background: #161d31;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .contact-logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .contact-logo img {
+      height: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-logo .brand-text {
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      font-size: 0.75rem;
+      color: #e9e0d0;
+    }
+    
+    .contact-title {
+      font-size: 2rem;
+      font-style: italic;
+      color: #e9e0d0;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-subtitle {
+      font-size: 0.9rem;
+      color: #e9e0d0;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+    
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 0.75rem 0;
+      margin-bottom: 1.5rem;
+      border: none;
+      border-bottom: 1px solid #c7a254;
+      background: transparent;
+      color: white;
+      font-size: 0.9rem;
+    }
+    
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-bottom-color: white;
+    }
+    
+    .form-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .contact-submit-btn {
+      background: #e9a95e;
+      color: #1a2a1e;
+      font-weight: bold;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .contact-submit-btn:hover {
+      background: #d09047;
+    }
+    
+    .footer-section {
+      background: #161d31;
+      color: white;
+      padding: 3rem 0;
+    }
+    
+    .footer-card {
+      background: linear-gradient(145deg, #161d31, #13161f);
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      padding: 3rem;
+    }
+    
+    .footer-card a {
+      transition: color 0.3s ease;
+    }
+    
+    .footer-card a:hover {
+      color: #c7a254;
+    }
+    
+    .footer-brand {
+      color: #d4af37;
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-subtitle {
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      letter-spacing: 0.1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-description {
+      font-size: 0.875rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-section-title {
+      font-style: italic;
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    
+    .footer-contact p {
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      font-size: 0.875rem;
+    }
+    
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+      
+      .contact-image {
+        min-height: 200px;
+      }
+      
+      .contact-form-container {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sección Hero - Carrusel -->
+  <section id="inicio" class="hero-section">
+    <!-- Barra lateral verde AHORA DENTRO DEL HERO -->
+    <div class="sidebar">
+      <div class="social-sidebar">
+        <a href="https://www.facebook.com/profile.php?id=61574669796239"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/_lasmariposasdelaestancia/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@lasmariposasdelaestancia"><i class="fab fa-tiktok"></i></a>
+        <a href="tel:+1234567890"><i class="fas fa-phone"></i></a>
+      </div>
+    </div>
+
+    <!-- Menú navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <button class="navbar-toggler menu-icon" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#inicio">INICIO</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#nosotros">NOSOTROS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#amenidades">AMENIDADES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#modelos">MODELOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacto">CONTACTO</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="hero-background bg-image-1"></div>
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h1 class="hero-title">Luxury Real Estate</h1>
+            <p class="hero-description">Our portfolio includes exquisite properties nestled in prime locations and prestigious neighborhoods renowned for their desirability.</p>
+            <a href="#contacto" class="btn explore-button">
+              EXPLORE HOMES <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="hero-background bg-image-2"></div>
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h1 class="hero-title">Un hogar de confort</h1>
+            <p class="hero-description">Las Mariposas, un ambiente privado para trascender en el tiempo; donde vivirás momentos que permanecerán para toda la vida.</p>
+            <a href="#contacto" class="btn explore-button">
+              CONTÁCTANOS <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Logo -->
+  <div class="logo">
+  <img src="logo.png" alt="Logo de Las Mariposas">
+  <div>LAS MARIPOSAS</div>
+</div>
+
+    
+    <!-- Flechas de navegación -->
+    <div class="navigation-arrows">
+      <div class="arrow left" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <i class="fas fa-angle-left" style="color: white;"></i>
+      </div>
+      <div class="arrow right" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <i class="fas fa-angle-right" style="color: white;"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Características -->
+  <section id="nosotros" class="features-section">
+    <div class="features-container">
+      <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="feature-icon">
+          <i class="fas fa-home"></i>
+        </div>
+        <h3 class="feature-title">Casas de Lujo</h3>
+      </div>
+      
+      <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="feature-icon">
+          <i class="fas fa-medal"></i>
+        </div>
+        <h3 class="feature-title">Satisfacción Garantizada</h3>
+      </div>
+      
+      <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="feature-icon">
+          <i class="fas fa-smile"></i>
+        </div>
+        <h3 class="feature-title">Dueños Felices</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Sobre Nosotros -->
+  <section class="about-section">
+    <h4 class="about-title" data-aos="fade-down" data-aos-delay="0">SOBRE NOSOTROS</h4>
+    <h2 class="about-subtitle" data-aos="fade-up" data-aos-delay="100">Un Mundo De Lujo</h2>
+  
+    <div class="about-logo" data-aos="zoom-in" data-aos-delay="200">
+      <img src="logo.png" alt="Logo HF" style="width: 100%;">
+    </div>
+  
+    <p class="about-description" data-aos="fade-up" data-aos-delay="300">
+      Somos una empresa dedicada a crear experiencias de vida únicas a través de desarrollos inmobiliarios de alta calidad. Con más de 15 años en el mercado, Las Mariposas representa nuestra visión de combinar naturaleza, comodidad y elegancia en un solo lugar para familias que buscan un estilo de vida exclusivo y tranquilo.
+    </p>
+  </section>
+  
+  <!-- Sección Línea del Tiempo -->
+  <section id="amenidades" class="details-section">
+
+    <!-- Detalle 1 -->
+    <div class="detail-item" data-aos="fade-right">
+      <div class="detail-image">
+        <img src="PLAZA CENTRAL.jpg" alt="Plaza central" />
+      </div>
+      <div class="detail-content">
+        <div class="number-badge">01</div>
+        <h2>Plaza Central</h2>
+        <p>Un lugar que inspira. Camina entre jardines, respira aire puro y conéctate con la tranquilidad. 
+          La Plaza Central es el alma de Las Mariposas, hecha para relajarte y disfrutar cada momento.</p>
+      </div>
+    </div>
+
+    <!-- Detalle 2 -->
+    <div class="detail-item" data-aos="fade-right">
+      <div class="detail-image">
+        <img src="PISCINA.png" alt="Piscina" />
+      </div>
+      <div class="detail-content">
+        <div class="number-badge">02</div>
+        <h2>Piscina</h2>
+        <p>¡Sumérgete en la experiencia! Nuestra piscina te invita a vivir días llenos de frescura,
+           diversión y descanso. Ya sea al amanecer o al atardecer, aquí cada chapuzón es inolvidable.</p>
+      </div>
+    </div>
+
+    <!-- Detalle 3 -->
+    <div class="detail-item" data-aos="fade-right">
+      <div class="detail-image">
+        <img src="DOGPARK.png" alt="Dog Park" />
+      </div>
+      <div class="detail-content">
+        <div class="number-badge">03</div>
+        <h2>Dog Park</h2>
+        <p>Confort, seguridad y naturaleza en un solo lugar. Espacios pensados para disfrutar en familia, con áreas verdes y ambientes diseñados para relajarte y crecer.</p>
+      </div>
+    </div>
+
+    <!-- Detalle 4 -->
+    <div class="detail-item" data-aos="fade-right">
+      <div class="detail-image">
+        <img src="SALONEVENTOS.png" alt="Salón de Eventos" />
+      </div>
+      <div class="detail-content">
+        <div class="number-badge">04</div>
+        <h2>Salón de Eventos</h2>
+        <p>Donde los grandes momentos cobran vida. Celebra cumpleaños, reuniones y eventos únicos en un espacio elegante,
+          climatizado y listo para crear recuerdos inolvidables.</p>
+      </div>
+    </div>
+
+      <!-- Detalle 5 -->
+    <div class="detail-item" data-aos="fade-right">
+      <div class="detail-image">
+        <img src="CANCHAS.png" alt="Canchas Deportivas" />
+      </div>
+      <div class="detail-content">
+        <div class="number-badge">05</div>
+        <h2>Canchas Deportivas</h2>
+        <p>Activa tu energía sin salir de casa. Disfruta partidos intensos, retos entre amigos y mucha adrenalina en nuestras 
+          canchas deportivas diseñadas para todas las edades.</p>
+      </div>
+    </div>
+
+    <!-- Detalle 6 -->
+    <div class="detail-item" data-aos="fade-right">
+      <div class="detail-image">
+        <img src="CHURRASQUERAS.png" alt="Área de Churrasquera" />
+      </div>
+      <div class="detail-content">
+        <div class="number-badge">06</div>
+        <h2>Área de Churrasquera</h2>
+        <p>Sabor, fuego y buena compañía. La churrasquera de Las Mariposas es el lugar perfecto para asados,
+          risas y tardes que se convierten en recuerdos para siempre.</p>
+      </div>
+    </div>
+  </section>
+  <!-- Sección Modelos de Casas -->
+  <section id="modelos" class="models-section">
+    <div class="models-header">
+      <h4 class="models-title">VIVIENDAS</h4>
+      <h2 class="models-subtitle">Modelos De Casas</h2>
+      <p class="models-description">El residencial LAS MARIPOSAS, un legado de la naturaleza para tu familia, donde despertarás con las increíbles vistas del amanecer y dormirás cubierto por un manto de estrellas.</p>
+      <a href="#contacto" class="btn explore-button"> CONTÁCTANOS</a>
+    </div>
+
+    <!-- Tabs para los dos modelos -->
+      <div class="model-tabs">
+        <button class="model-tab active" onclick="showModel('modelo1')">MODELO 1</button>
+        <button class="model-tab" onclick="showModel('modelo2')">MODELO 2</button>
+      </div>
+    
+    <!-- Contenido Modelo 1 -->
+    <div id="modelo1" class="model-content">
+      <div class="model-header">
+        <h2>CASA</h2>
+        <h3>MARIPOSAS 1</h3>
+      </div>
+    
+      <div class="model-details">
+        <p>Este elegante modelo de casa ofrece un espacio perfectamente distribuido de 213 m² de construcción + 31 de pergola, diseñado para brindar comodidad y funcionalidad a cada miembro de la familia. Un hogar donde cada detalle ha sido pensado para crear momentos inolvidables.</p>
+      </div>
+    
+      <div class="model-images">
+        <div id="modelSlider1" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="model-image">
+                <img src="interior6.png" alt="Casa Familiar - Vista 1" class="model-img">
+                
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="model-image">
+                <img src="interior2.png" alt="Casa Familiar - Vista 3" class="model-img">
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="model-image">
+                <img src="interior1.png" alt="Casa Familiar - Vista 3" class="model-img">
+              </div>
+            </div>
+          </div>
+      
+          <button class="carousel-control-prev" type="button" data-bs-target="#modelSlider1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#modelSlider1" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>      
+    
+      <div class="model-specs">
+        <div class="spec-item">
+          <div class="spec-value">3</div>
+          <div class="spec-label">Habitaciones</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-value">4.5</div>
+          <div class="spec-label">Baños</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-value">213m²</div>
+          <div class="spec-label">Construcción</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-value">$385,000</div>
+          <div class="spec-label">Precio desde</div>
+        </div>
+      </div>
+    
+      <button href="#contacto" class="contact-btn" onclick="scrollToContact()">Contáctanos</button>
+    </div>
+
+    <!-- Contenido Modelo 2 -->
+    <div id="modelo2" class="model-content" style="display: none;">
+      <div class="model-header">
+        <h2>CASA</h2>
+        <h3>MARIPOSAS 2</h3>
+      </div>
+    
+      <div class="model-details">
+        <p>Un modelo más amplio de 241 m² de construcción con 33 de pergola, diseñado para familias que buscan mayor espacio y comodidades premium. Perfecta para quienes valoran el confort y la elegancia en cada detalle de su hogar.</p>
+      </div>
+
+    
+      <div class="model-images">
+        <div id="modelSlider2" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="model-image">
+                <img src="interior7.png" alt="planos de casa 2" class="model-img">
+            
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="model-image">
+                <img src="interior3.png" alt="especificaciones de la casa" class="model-img">
+              </div>
+
+            </div>
+             <div class="carousel-item">
+              <div class="model-image">
+                <img src="interior5.png" alt="especificaciones de la casa" class="model-img">
+              </div>
+            </div>
+          </div>
+      
+          <button class="carousel-control-prev" type="button" data-bs-target="#modelSlider2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#modelSlider2" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>      
+    
+      <div class="model-specs">
+        <div class="spec-item">
+          <div class="spec-value">4</div>
+          <div class="spec-label">Habitaciones</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-value">5.5</div>
+          <div class="spec-label">Baños</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-value">1</div>
+          <div class="spec-label">Garage</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-value">$414,000</div>
+          <div class="spec-label">Precio desde</div>
+        </div>
+      </div>
+    
+      <button class="contact-btn" onclick="scrollToContact()">Contáctanos</button>
+    </div>
+  </section>
+  
+
+  <!-- Sección de Contacto -->
+  <section id="contacto" class="contact-section">
+    <div class="container">
+      <div class="contact-container" data-aos="fade-up">
+        
+        <!-- Imagen de fondo -->
+        <div class="contact-image">
+        </div>
+
+        <!-- Formulario de contacto -->
+        <div class="contact-form-container">
+          <div class="contact-logo" data-aos="fade-down">
+            <img src="logo.png" alt="Logo" />
+            <div class="brand-text">CONTACTO</div>
+          </div>
+
+          <h2 class="contact-title" data-aos="fade-right">Deja tu mensaje</h2>
+          <p class="contact-subtitle" data-aos="fade-left">
+            Te invitamos a dar el primer paso hacia tu nuevo hogar...
+          </p>
+
+          <form class="contact-form" data-aos="fade-up">
+            <input type="text" placeholder="Nombre Completo" required class="form-input" />
+            <input type="tel" placeholder="Teléfono" required class="form-input" />
+            <input type="email" placeholder="Correo electrónico" required class="form-input" />
+            <textarea placeholder="Mensaje" class="form-textarea"></textarea>
+            <button type="submit" class="contact-submit-btn">
+              ENVIAR
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-section">
+    <div class="container">
+      <div class="footer-card" data-aos="fade-up">
+        <div class="row">
+          <!-- Columna 1 -->
+          <div class="col-md-4 mb-4">
+            <h2 class="footer-brand">LAS MARIPOSAS</h2>
+            <p class="footer-description">
+              Las Mariposas, un ambiente privado para trascender en el tiempo; donde vivirás momentos que permanecerán para toda la vida.
+            </p>
+            <div class="d-flex gap-3">
+              <a href="https://www.facebook.com/profile.php?id=61574669796239"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/_lasmariposasdelaestancia/"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.tiktok.com/@lasmariposasdelaestancia"><i class="fab fa-tiktok"></i></a>
+            </div>
+          </div>
+
+          <!-- Columna 2 -->
+          <div class="col-md-4 mb-4">
+            <h3 class="footer-section-title">Explora</h3>
+            <ul class="footer-links">
+              <li><a href="#nosotros">Sobre Nosotros</a></li>
+              <li><a href="#amenidades">Amenidades</a></li>
+              <li><a href="#modelos">Modelos</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+
+          <!-- Columna 3 -->
+          <div class="col-md-4 mb-4">
+            <h3 class="footer-section-title">Contacto</h3>
+            <div class="footer-contact">
+              <p>Antigua Guatemala, Guatemala</p>
+              <p>
+                <a href="tel:+50242106503">+502 4210-6503</a>
+              </p>
+              <p>
+                <a href="mailto:info@lasmariposas.gt">info@lasmariposas.gt</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center">
+          <p class="mb-0">© <span id="currentYear"></span> Las Mariposas</p>
+          <p class="mb-0">Desarrollado con ❤️ para tu futuro hogar</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    // Función para cambiar entre modelos
+    function showModel(modelId) {
+      // Ocultar todos los modelos
+      document.getElementById('modelo1').style.display = 'none';
+      document.getElementById('modelo2').style.display = 'none';
+      
+      // Mostrar el modelo seleccionado
+      document.getElementById(modelId).style.display = 'block';
+      
+      // Actualizar tabs activos
+      document.querySelectorAll('.model-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+    // Script para el scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        
+        // Cerrar el menú desplegable en móvil al hacer clic
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+          navbarCollapse.classList.remove('show');
+        }
+      });
+    });
+    
+// Asegurar que los carruseles tengan el efecto fade
+document.addEventListener('DOMContentLoaded', function() {
+      // Hero Carousel
+      var heroCarousel = document.querySelector('#heroCarousel');
+      if (heroCarousel) {
+        var carousel = new bootstrap.Carousel(heroCarousel, {
+          interval: 5000,
+          fade: true
+        });
+      }
+      
+      // Model Slider
+      var modelSlider = document.querySelector('#modelSlider');
+      if (modelSlider) {
+        var modelCarousel = new bootstrap.Carousel(modelSlider, {
+          interval: 4000,
+          fade: true
+        });
+      }
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+     document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all carousels
+    var carousels = document.querySelectorAll('.carousel');
+    carousels.forEach(function(carousel) {
+      new bootstrap.Carousel(carousel, {
+        interval: 5000
+      });
+    });
+    
+    // Mobile menu functionality
+    var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    var navbarCollapse = document.querySelector('.navbar-collapse');
+    var navbarToggler = document.querySelector('.navbar-toggler');
+    
+    // Close mobile menu when clicking a link
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (navbarCollapse.classList.contains('show')) {
+          navbarCollapse.classList.remove('show');
+        }
+      });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      var isClickInside = navbarCollapse.contains(event.target) || navbarToggler.contains(event.target);
+      if (!isClickInside && navbarCollapse.classList.contains('show')) {
+        navbarToggler.click();
+      }
+    });
+    
+    // Add smooth scrolling with offset for fixed navbar
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Get the target element
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        // Calculate offset for fixed navbar
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        
+        // Smooth scroll
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      });
+    });
+  });
+  </script>
+  
+  <script src="animaciones.js"></script>
+</body>
+</html>

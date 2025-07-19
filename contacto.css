@@ -1,0 +1,33 @@
+    .footer-card {
+      background: linear-gradient(145deg, #161d31, #13161f);
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer-card a {
+      transition: color 0.3s ease;
+    }
+
+    .footer-card a:hover {
+      color: #c7a254;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .form-input,
+    .form-textarea {
+      border: none;
+      border-bottom: 1px solid #c7a254;
+      background: transparent;
+      color: white;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-bottom-color: white;
+    }
+  

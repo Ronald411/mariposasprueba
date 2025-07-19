@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto - Los Franciscanos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="contacto.css">
+</head>
+<body class="bg-[#161d31] text-[#e9e0d0] font-[Georgia] m-0 p-0">
+
+  <div class="min-h-screen flex flex-col">
+    <div class="flex flex-col md:flex-row flex-1">
+      
+      <!-- Imagen -->
+      <div class="w-full md:w-1/2 relative overflow-hidden hidden md:block">
+        <div class="absolute inset-0 bg-gradient-to-l from-transparent via-[#161d31cc] to-[#161d31] z-10"></div>
+        <img src="portada1.jpg" alt="Imagen" class="w-full h-full object-cover object-bottom" />
+      </div>
+
+      <!-- Formulario -->
+      <div class="w-full md:w-1/2 bg-[#161d31] px-6 py-12 md:px-20 md:py-16 flex flex-col justify-center" data-aos="fade-up">
+        <div class="text-center mb-6" data-aos="fade-down">
+          <img src="logo.png" alt="Logo" class="h-8 mx-auto mb-4" />
+          <div class="uppercase tracking-widest text-xs">CONTACTO</div>
+        </div>
+
+        <h2 class="text-3xl italic text-[#e9e0d0] mb-4" data-aos="fade-right">Deja tu mensaje</h2>
+        <p class="text-sm mb-8 text-[#e9e0d0]" data-aos="fade-left">
+          Te invitamos a dar el primer paso hacia tu nuevo hogar...
+        </p>
+
+        <form class="space-y-6" data-aos="fade-up">
+          <input type="text" placeholder="Nombre Completo" required class="form-input w-full py-2 text-sm" />
+          <input type="tel" placeholder="Teléfono" required class="form-input w-full py-2 text-sm" />
+          <input type="email" placeholder="Correo electrónico" required class="form-input w-full py-2 text-sm" />
+          <textarea placeholder="Mensaje" class="form-textarea w-full py-2 text-sm min-h-[100px] resize-y"></textarea>
+          <button type="submit" class="bg-[#e9a95e] text-[#1a2a1e] font-bold py-3 px-6 hover:bg-[#d09047] transition">
+            ENVIAR
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#161d31] text-white pt-8 pb-16 px-4">
+      <div class="max-w-7xl mx-auto footer-card p-10 md:p-16 flex flex-col md:flex-row justify-between gap-12" data-aos="fade-up">
+        <!-- Columna 1 -->
+        <div class="flex-1">
+          <h2 class="text-2xl font-light text-[#d4af37] mb-1">LOS FRANCISCANOS</h2>
+          <p class="uppercase text-sm tracking-wider mb-4">CLUB RESIDENCIAL</p>
+          <p class="text-sm opacity-90 mb-4">
+            Club Residencial Los Franciscanos, un ambiente privado...
+          </p>
+          <div class="flex gap-4">
+            <a href="#" class="hover:text-[#d4af37]">[icono 1]</a>
+            <a href="#" class="hover:text-[#d4af37]">[icono 2]</a>
+          </div>
+        </div>
+
+        <!-- Columna 2 -->
+        <div class="flex-1">
+          <h3 class="italic text-lg mb-4">Explora</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-[#d4af37]">Sobre Nosotros</a></li>
+            <li><a href="#" class="hover:text-[#d4af37]">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3 -->
+        <div class="flex-1">
+          <h3 class="italic text-lg mb-4">Contacto</h3>
+          <p class="mb-2 text-sm">Antigua Guatemala, Guatemala</p>
+          <p class="mb-2 text-sm">
+            <a href="tel:+50242106503" class="hover:text-[#d4af37]">+502 4210-6503</a>
+          </p>
+          <p class="text-sm">
+            <a href="mailto:info@losfranciscanos.gt" class="hover:text-[#d4af37]">info@losfranciscanos.gt</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-white/20 pt-6 text-sm text-center md:text-left md:flex md:justify-between max-w-7xl mx-auto px-4">
+        <p>© <span id="currentYear"></span> Los Franciscanos</p>
+        <p>Construido por <a href="#" class="hover:text-[#d4af37]">Wokonik</a> en asociación con <a href="#" class="hover:text-[#d4af37]">Fix-U</a></p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
