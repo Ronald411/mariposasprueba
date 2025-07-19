@@ -1174,35 +1174,40 @@
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.6);
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 15% auto;
+    background-color: #ffffff;
+    margin: 10% auto;
     padding: 30px;
     border-radius: 15px;
-    width: 90%;
+    width: 85%;
     max-width: 400px;
     text-align: center;
     position: relative;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
     animation: modalSlideIn 0.3s ease-out;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 @keyframes modalSlideIn {
     from {
-        transform: translateY(-50px);
+        transform: translateY(-50px) scale(0.9);
         opacity: 0;
     }
     to {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
         opacity: 1;
     }
 }
@@ -1211,53 +1216,71 @@
     color: #28a745;
     font-size: 60px;
     margin-bottom: 20px;
+    font-weight: bold;
+    display: block;
 }
 
 .modal h2 {
     color: #333;
-    margin-bottom: 15px;
+    margin: 0 0 15px 0;
     font-size: 24px;
+    font-weight: 600;
 }
 
 .modal p {
     color: #666;
-    margin-bottom: 25px;
-    line-height: 1.5;
+    margin: 0 0 25px 0;
+    line-height: 1.6;
+    font-size: 16px;
 }
 
 .close-btn {
     background: #007bff;
     color: white;
     border: none;
-    padding: 12px 25px;
+    padding: 14px 30px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    transition: background 0.3s;
+    font-weight: 500;
+    transition: all 0.3s;
+    outline: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.close-btn:hover {
+.close-btn:hover,
+.close-btn:focus {
     background: #0056b3;
+    transform: translateY(-1px);
+}
+
+.close-btn:active {
+    transform: translateY(0);
 }
 
 .error {
     color: #dc3545;
     background: #f8d7da;
     border: 1px solid #f5c6cb;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 12px;
+    border-radius: 6px;
     margin: 10px 0;
+    font-size: 14px;
 }
 
 /* Media Queries para móviles */
 @media screen and (max-width: 768px) {
+    .modal {
+        padding: 20px;
+    }
+    
     .modal-content {
-        margin: 20% auto;
-        width: 95%;
+        margin: 15% auto;
+        width: 90%;
         padding: 25px 20px;
         border-radius: 12px;
-        max-height: 80vh;
-        overflow-y: auto;
+        min-height: 180px;
     }
     
     .success-icon {
@@ -1271,24 +1294,29 @@
     }
     
     .modal p {
-        font-size: 16px;
+        font-size: 15px;
         margin-bottom: 20px;
+        padding: 0 5px;
     }
     
     .close-btn {
-        padding: 14px 30px;
+        padding: 16px 40px;
         font-size: 16px;
-        width: 100%;
+        width: 80%;
     }
 }
 
 @media screen and (max-width: 480px) {
+    .modal {
+        padding: 15px;
+    }
+    
     .modal-content {
-        margin: 10% auto;
-        width: 98%;
+        margin: 20% auto;
+        width: 95%;
         padding: 20px 15px;
         border-radius: 10px;
-        max-height: 85vh;
+        min-height: 160px;
     }
     
     .success-icon {
@@ -1302,38 +1330,50 @@
     }
     
     .modal p {
-        font-size: 15px;
+        font-size: 14px;
         margin-bottom: 18px;
-        padding: 0 5px;
+        line-height: 1.5;
     }
     
     .close-btn {
-        padding: 12px 25px;
+        padding: 14px 30px;
         font-size: 15px;
+        width: 90%;
     }
     
     .error {
-        font-size: 14px;
-        padding: 8px;
+        font-size: 13px;
+        padding: 10px;
     }
 }
 
-/* Para pantallas muy pequeñas (320px) */
-@media screen and (max-width: 320px) {
+/* Para pantallas muy pequeñas */
+@media screen and (max-width: 360px) {
     .modal-content {
-        margin: 5% auto;
-        padding: 15px 10px;
+        margin: 25% auto;
+        width: 98%;
+        padding: 18px 12px;
+        min-height: 140px;
     }
     
     .success-icon {
         font-size: 40px;
+        margin-bottom: 10px;
     }
     
     .modal h2 {
         font-size: 18px;
+        margin-bottom: 8px;
     }
     
     .modal p {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+    
+    .close-btn {
+        padding: 12px 25px;
         font-size: 14px;
+        width: 100%;
     }
 }

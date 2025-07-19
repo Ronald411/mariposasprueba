@@ -433,7 +433,7 @@
     ENVIAR
   </button>
 </form>
-  <!-- Modal de confirmación -->
+ <!-- Modal de confirmación -->
 <div id="successModal" class="modal">
     <div class="modal-content">
         <div class="success-icon">✓</div>
@@ -445,7 +445,6 @@
         </div>
       </div>
     </section>
-
   <!-- Footer -->
   <footer class="footer-section">
     <div class="container">
@@ -497,61 +496,116 @@
       </div>
     </div>
   </footer>
+  
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   
   <script>
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
-const modal = document.getElementById('successModal');
-const submitBtn = document.getElementById('submitBtn');
-const errorDiv = document.getElementById('errorMessage');
+    const modal = document.getElementById('successModal');
+    const submitBtn = document.getElementById('submitBtn');
+    const errorDiv = document.getElementById('errorMessage');
 
-form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    // Cambiar el botón mientras se envía
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'ENVIANDO...';
-    errorDiv.innerHTML = '';
+    // Verificar que todos los elementos existen
+    console.log('Form:', form);
+    console.log('Modal:', modal);
+    console.log('Submit button:', submitBtn);
 
-    const formData = new FormData(form);
-
-    try {
-        const response = await fetch('https://formspree.io/f/myzpzpyg', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-
-        if (response.ok) {
-            // Mostrar modal de éxito
-            modal.style.display = 'block';
-            // Limpiar el formulario
-            form.reset();
-        } else {
-            throw new Error('Error en el envío');
-        }
-    } catch (error) {
-        errorDiv.innerHTML = '<div class="error">Hubo un error al enviar el mensaje. Por favor intenta de nuevo.</div>';
-    } finally {
-        // Restaurar el botón
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'ENVIAR';
+    if (!form || !modal || !submitBtn) {
+        console.error('Faltan elementos del DOM');
+        return;
     }
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        console.log('Formulario enviado');
+        
+        // Cambiar el botón mientras se envía
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'ENVIANDO...';
+        if (errorDiv) errorDiv.innerHTML = '';
+
+        const formData = new FormData(form);
+        
+        // Debug: mostrar datos del formulario
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
+
+        try {
+            const response = await fetch('https://formspree.io/f/myzpzpyg', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            console.log('Response status:', response.status);
+
+            if (response.ok) {
+                console.log('¡Éxito! Mostrando modal...');
+                // Mostrar modal de éxito
+                modal.style.display = 'block';
+                modal.style.visibility = 'visible';
+                modal.style.opacity = '1';
+                
+                // Forzar el contenido del modal por si acaso
+                const modalContent = modal.querySelector('.modal-content');
+                if (modalContent) {
+                    modalContent.innerHTML = `
+                        <div class="success-icon">✓</div>
+                        <h2>¡Mensaje Enviado!</h2>
+                        <p>Gracias por contactarnos. Hemos recibido tu mensaje y te responderemos pronto.</p>
+                        <button class="close-btn" onclick="closeModal()">Cerrar</button>
+                    `;
+                }
+                
+                // Limpiar el formulario
+                form.reset();
+            } else {
+                throw new Error('Error en el envío');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            if (errorDiv) {
+                errorDiv.innerHTML = '<div class="error">Hubo un error al enviar el mensaje. Por favor intenta de nuevo.</div>';
+            }
+        } finally {
+            // Restaurar el botón
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'ENVIAR';
+        }
+    });
 });
 
 function closeModal() {
-    modal.style.display = 'none';
+    const modal = document.getElementById('successModal');
+    if (modal) {
+        modal.style.display = 'none';
+        modal.style.visibility = 'hidden';
+        modal.style.opacity = '0';
+    }
 }
 
 // Cerrar modal al hacer clic fuera de él
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = 'none';
+    const modal = document.getElementById('successModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+}
+
+// Para debug: función para mostrar el modal manualmente
+function testModal() {
+    const modal = document.getElementById('successModal');
+    if (modal) {
+        modal.style.display = 'block';
+        console.log('Modal mostrado para prueba');
     }
 }
     // Función para cambiar entre modelos
@@ -585,7 +639,7 @@ window.onclick = function(event) {
         }
       });
     });
-    
+    /////////////////////////////////////////////////
 // Asegurar que los carruseles tengan el efecto fade
 document.addEventListener('DOMContentLoaded', function() {
       // Hero Carousel
